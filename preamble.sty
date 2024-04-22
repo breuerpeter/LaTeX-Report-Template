@@ -1,0 +1,155 @@
+\ProvidesPackage{preamble}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Including files %%%
+\usepackage{import}
+
+%%% Encoding %%%
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+
+%%% Paper size %%%
+\usepackage{a4}
+
+%%% Headers and footers %%%
+\usepackage{fancyhdr}
+\rhead[\thepage]{\nouppercase{\rightmark}}
+\lhead[\nouppercase{\leftmark}]{\thepage}
+\cfoot{}
+
+%%% More symbols %%%
+\usepackage{gensymb}
+
+%%% Multi column %%%
+\usepackage{multicol}
+
+%%% Figures %%%
+\usepackage{graphicx}
+\usepackage{caption}
+
+%%% Formatting optimization problems %%%
+\usepackage{optidef}
+
+% Bibliography
+\usepackage[backend=biber,style=alphabetic,sorting=ynt]{biblatex}
+
+%%% Table formatting %%%
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{tabularx}
+\usepackage{ltablex} % for multi-page tables
+
+%%% Graphics %%%
+\usepackage{tikz}
+
+%%% Maths %%%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\renewcommand{\vec}{\vectorsym} % bold for vector
+\newcommand{\mat}{\matrixsym} % bold for matrix
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\real}{\mathrm{Re}}
+\DeclareMathOperator{\imag}{\mathrm{Im}}
+
+%%% Fractions %%%
+\usepackage{xfrac}
+
+%%% Colors %%%
+\usepackage[table,xcdraw]{xcolor}
+
+\definecolor{black}{rgb}{0,0,0}
+\definecolor{white}{rgb}{1,1,1}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{darkblue}{rgb}{0,0,0.5}
+
+%%% Colored boxes %%%
+\usepackage[most]{tcolorbox}
+
+%%% Icons %%%
+\usepackage{fontawesome5}
+
+%%% SVG files %%%
+\usepackage{svg}
+
+%%% ISO math notation %%%
+\usepackage{isomath}
+
+%%% Units %%%
+\usepackage{siunitx}
+
+%%% Include PDF pages %%%
+\usepackage{pdfpages}
+\includepdfset{
+    pages={-},
+    frame=true,
+    pagecommand={\thispagestyle{fancy}}
+}
+
+%%% Links %%%
+\PassOptionsToPackage{hyphens}{url} % consider hyphens as break points for URLs
+\usepackage{hyperref}
+\makeatletter
+\hypersetup{
+    %colorlinks=true,
+    %linkcolor=blue,
+    %filecolor=magenta,      
+    %urlcolor=cyan,
+    pdftitle=\@title,
+    pdfauthor=\@author,
+    pdfpagemode=FullScreen,
+}
+\makeatother
+
+%%% Referencing %%%
+\usepackage{cleveref} % has to be loaded after hyperref
+
+%%% For custom command %%%
+\usepackage{xparse}
+
+%%% List of symbols (nomenclature) %%%
+\usepackage[intoc, english]{nomencl}
+\makenomenclature
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{A}{Acronyms}{%
+  \ifstrequal{#1}{V}{Abbreviations}{%
+  \ifstrequal{#1}{C}{Constants}{%
+  \ifstrequal{#1}{S}{Other Symbols}{}}}}%
+]} % structure list of symbols into subgroups
+
+\newcommand{\nomunit}[1]{%
+\renewcommand{\nomentryend}{\hspace*{\fill}#1}} % add units to symbols
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Other settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Paragraph spacing %%%
+\setlength\parindent{0pt}
+\parskip=10pt
+\parindent=0pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Other macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% TODOs %%%
+\newcommand\todo[1]{\large \textbf{\textcolor{red}{\uppercase{#1}}}\normalsize}
+
+%%% Derivatives %%%
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}}
+
+%%% Does not imply symbol %%%
+\newcommand{\notimplies}{\;\not\!\!\!\implies}
+
